@@ -1,0 +1,337 @@
+
+keyboard_4x4.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000192  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000010  00800060  00000192  00000226  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000006  00800070  00800070  00000236  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000236  2**0
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000030  00000000  00000000  00000266  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000285  00000000  00000000  00000296  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000018b  00000000  00000000  0000051b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000185  00000000  00000000  000006a6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000050  00000000  00000000  0000082c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000001e9  00000000  00000000  0000087c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000144  00000000  00000000  00000a65  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000020  00000000  00000000  00000ba9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	2c c0       	rjmp	.+88     	; 0x5c <__bad_interrupt>
+   4:	2b c0       	rjmp	.+86     	; 0x5c <__bad_interrupt>
+   6:	2a c0       	rjmp	.+84     	; 0x5c <__bad_interrupt>
+   8:	29 c0       	rjmp	.+82     	; 0x5c <__bad_interrupt>
+   a:	28 c0       	rjmp	.+80     	; 0x5c <__bad_interrupt>
+   c:	27 c0       	rjmp	.+78     	; 0x5c <__bad_interrupt>
+   e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
+  10:	25 c0       	rjmp	.+74     	; 0x5c <__bad_interrupt>
+  12:	24 c0       	rjmp	.+72     	; 0x5c <__bad_interrupt>
+  14:	23 c0       	rjmp	.+70     	; 0x5c <__bad_interrupt>
+  16:	22 c0       	rjmp	.+68     	; 0x5c <__bad_interrupt>
+  18:	21 c0       	rjmp	.+66     	; 0x5c <__bad_interrupt>
+  1a:	20 c0       	rjmp	.+64     	; 0x5c <__bad_interrupt>
+  1c:	1f c0       	rjmp	.+62     	; 0x5c <__bad_interrupt>
+  1e:	1e c0       	rjmp	.+60     	; 0x5c <__bad_interrupt>
+  20:	1d c0       	rjmp	.+58     	; 0x5c <__bad_interrupt>
+  22:	1c c0       	rjmp	.+56     	; 0x5c <__bad_interrupt>
+  24:	1b c0       	rjmp	.+54     	; 0x5c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	e2 e9       	ldi	r30, 0x92	; 146
+  3a:	f1 e0       	ldi	r31, 0x01	; 1
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+  42:	a0 37       	cpi	r26, 0x70	; 112
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
+
+00000048 <__do_clear_bss>:
+  48:	20 e0       	ldi	r18, 0x00	; 0
+  4a:	a0 e7       	ldi	r26, 0x70	; 112
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	a6 37       	cpi	r26, 0x76	; 118
+  54:	b2 07       	cpc	r27, r18
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	87 d0       	rcall	.+270    	; 0x168 <main>
+  5a:	99 c0       	rjmp	.+306    	; 0x18e <_exit>
+
+0000005c <__bad_interrupt>:
+  5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
+
+0000005e <setPorts>:
+void setPorts(volatile uint8_t *, volatile uint8_t *, volatile uint8_t *);
+char pushKey();
+
+void setPorts(volatile uint8_t * ddr, volatile uint8_t * port, volatile uint8_t * pin) {
+	
+	KEYBOARD_DDR = ddr;
+  5e:	90 93 75 00 	sts	0x0075, r25
+  62:	80 93 74 00 	sts	0x0074, r24
+	KEYBOARD_PORT = port;
+  66:	70 93 73 00 	sts	0x0073, r23
+  6a:	60 93 72 00 	sts	0x0072, r22
+	KEYBOARD_PIN = pin;
+  6e:	50 93 71 00 	sts	0x0071, r21
+  72:	40 93 70 00 	sts	0x0070, r20
+	
+	*KEYBOARD_DDR = 0b00001111;
+  76:	2f e0       	ldi	r18, 0x0F	; 15
+  78:	fc 01       	movw	r30, r24
+  7a:	20 83       	st	Z, r18
+	*KEYBOARD_PORT = 0b11111111;
+  7c:	e0 91 72 00 	lds	r30, 0x0072
+  80:	f0 91 73 00 	lds	r31, 0x0073
+  84:	8f ef       	ldi	r24, 0xFF	; 255
+  86:	80 83       	st	Z, r24
+  88:	08 95       	ret
+
+0000008a <pushKey>:
+}
+
+char pushKey() {
+  8a:	cf 93       	push	r28
+  8c:	df 93       	push	r29
+	int i, j;
+	
+	for(i = 0; i < 4; i++)
+  8e:	60 e0       	ldi	r22, 0x00	; 0
+  90:	70 e0       	ldi	r23, 0x00	; 0
+	{
+		*KEYBOARD_PORT &= ~(1 << i);
+  92:	c1 e0       	ldi	r28, 0x01	; 1
+  94:	d0 e0       	ldi	r29, 0x00	; 0
+  96:	e0 91 72 00 	lds	r30, 0x0072
+  9a:	f0 91 73 00 	lds	r31, 0x0073
+  9e:	80 81       	ld	r24, Z
+  a0:	de 01       	movw	r26, r28
+  a2:	06 2e       	mov	r0, r22
+  a4:	02 c0       	rjmp	.+4      	; 0xaa <pushKey+0x20>
+  a6:	aa 0f       	add	r26, r26
+  a8:	bb 1f       	adc	r27, r27
+  aa:	0a 94       	dec	r0
+  ac:	e2 f7       	brpl	.-8      	; 0xa6 <pushKey+0x1c>
+  ae:	9a 2f       	mov	r25, r26
+  b0:	90 95       	com	r25
+  b2:	89 23       	and	r24, r25
+  b4:	80 83       	st	Z, r24
+
+		for(j = 0; j < 4; j++)
+		{
+			if(!(*KEYBOARD_PIN & (1 << (j + 4)))) // jest stan LOW
+  b6:	e0 91 70 00 	lds	r30, 0x0070
+  ba:	f0 91 71 00 	lds	r31, 0x0071
+  be:	80 81       	ld	r24, Z
+  c0:	84 ff       	sbrs	r24, 4
+  c2:	0f c0       	rjmp	.+30     	; 0xe2 <pushKey+0x58>
+	
+	for(i = 0; i < 4; i++)
+	{
+		*KEYBOARD_PORT &= ~(1 << i);
+
+		for(j = 0; j < 4; j++)
+  c4:	ce 01       	movw	r24, r28
+		{
+			if(!(*KEYBOARD_PIN & (1 << (j + 4)))) // jest stan LOW
+  c6:	40 81       	ld	r20, Z
+  c8:	9c 01       	movw	r18, r24
+  ca:	2c 5f       	subi	r18, 0xFC	; 252
+  cc:	3f 4f       	sbci	r19, 0xFF	; 255
+  ce:	50 e0       	ldi	r21, 0x00	; 0
+  d0:	02 2e       	mov	r0, r18
+  d2:	02 c0       	rjmp	.+4      	; 0xd8 <pushKey+0x4e>
+  d4:	55 95       	asr	r21
+  d6:	47 95       	ror	r20
+  d8:	0a 94       	dec	r0
+  da:	e2 f7       	brpl	.-8      	; 0xd4 <pushKey+0x4a>
+  dc:	40 fd       	sbrc	r20, 0
+  de:	2f c0       	rjmp	.+94     	; 0x13e <pushKey+0xb4>
+  e0:	04 c0       	rjmp	.+8      	; 0xea <pushKey+0x60>
+  e2:	24 e0       	ldi	r18, 0x04	; 4
+  e4:	30 e0       	ldi	r19, 0x00	; 0
+	
+	for(i = 0; i < 4; i++)
+	{
+		*KEYBOARD_PORT &= ~(1 << i);
+
+		for(j = 0; j < 4; j++)
+  e6:	80 e0       	ldi	r24, 0x00	; 0
+  e8:	90 e0       	ldi	r25, 0x00	; 0
+		{
+			if(!(*KEYBOARD_PIN & (1 << (j + 4)))) // jest stan LOW
+			{
+				char key = keyboard[3 - j][3 - i];
+  ea:	43 e0       	ldi	r20, 0x03	; 3
+  ec:	50 e0       	ldi	r21, 0x00	; 0
+  ee:	fa 01       	movw	r30, r20
+  f0:	e8 1b       	sub	r30, r24
+  f2:	f9 0b       	sbc	r31, r25
+  f4:	46 1b       	sub	r20, r22
+  f6:	57 0b       	sbc	r21, r23
+  f8:	ee 0f       	add	r30, r30
+  fa:	ff 1f       	adc	r31, r31
+  fc:	ee 0f       	add	r30, r30
+  fe:	ff 1f       	adc	r31, r31
+ 100:	e4 0f       	add	r30, r20
+ 102:	f5 1f       	adc	r31, r21
+ 104:	e0 5a       	subi	r30, 0xA0	; 160
+ 106:	ff 4f       	sbci	r31, 0xFF	; 255
+ 108:	80 81       	ld	r24, Z
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 10a:	ef e3       	ldi	r30, 0x3F	; 63
+ 10c:	fc e9       	ldi	r31, 0x9C	; 156
+ 10e:	31 97       	sbiw	r30, 0x01	; 1
+ 110:	f1 f7       	brne	.-4      	; 0x10e <pushKey+0x84>
+ 112:	00 c0       	rjmp	.+0      	; 0x114 <pushKey+0x8a>
+ 114:	00 00       	nop
+				 	
+				_delay_ms(20);
+				while(!(*KEYBOARD_PIN & (1 << (j + 4))));
+ 116:	e0 91 70 00 	lds	r30, 0x0070
+ 11a:	f0 91 71 00 	lds	r31, 0x0071
+ 11e:	41 e0       	ldi	r20, 0x01	; 1
+ 120:	50 e0       	ldi	r21, 0x00	; 0
+ 122:	ba 01       	movw	r22, r20
+ 124:	02 c0       	rjmp	.+4      	; 0x12a <pushKey+0xa0>
+ 126:	66 0f       	add	r22, r22
+ 128:	77 1f       	adc	r23, r23
+ 12a:	2a 95       	dec	r18
+ 12c:	e2 f7       	brpl	.-8      	; 0x126 <pushKey+0x9c>
+ 12e:	9b 01       	movw	r18, r22
+ 130:	40 81       	ld	r20, Z
+ 132:	50 e0       	ldi	r21, 0x00	; 0
+ 134:	42 23       	and	r20, r18
+ 136:	53 23       	and	r21, r19
+ 138:	45 2b       	or	r20, r21
+ 13a:	d1 f3       	breq	.-12     	; 0x130 <pushKey+0xa6>
+ 13c:	12 c0       	rjmp	.+36     	; 0x162 <pushKey+0xd8>
+	
+	for(i = 0; i < 4; i++)
+	{
+		*KEYBOARD_PORT &= ~(1 << i);
+
+		for(j = 0; j < 4; j++)
+ 13e:	01 96       	adiw	r24, 0x01	; 1
+ 140:	84 30       	cpi	r24, 0x04	; 4
+ 142:	91 05       	cpc	r25, r1
+ 144:	09 f0       	breq	.+2      	; 0x148 <pushKey+0xbe>
+ 146:	bf cf       	rjmp	.-130    	; 0xc6 <pushKey+0x3c>
+				
+				return key;
+			}
+		}
+
+		*KEYBOARD_PORT |= (1 << i);
+ 148:	e0 91 72 00 	lds	r30, 0x0072
+ 14c:	f0 91 73 00 	lds	r31, 0x0073
+ 150:	80 81       	ld	r24, Z
+ 152:	a8 2b       	or	r26, r24
+ 154:	a0 83       	st	Z, r26
+}
+
+char pushKey() {
+	int i, j;
+	
+	for(i = 0; i < 4; i++)
+ 156:	6f 5f       	subi	r22, 0xFF	; 255
+ 158:	7f 4f       	sbci	r23, 0xFF	; 255
+ 15a:	64 30       	cpi	r22, 0x04	; 4
+ 15c:	71 05       	cpc	r23, r1
+ 15e:	09 f0       	breq	.+2      	; 0x162 <pushKey+0xd8>
+ 160:	9a cf       	rjmp	.-204    	; 0x96 <pushKey+0xc>
+			}
+		}
+
+		*KEYBOARD_PORT |= (1 << i);
+	}
+ 162:	df 91       	pop	r29
+ 164:	cf 91       	pop	r28
+ 166:	08 95       	ret
+
+00000168 <main>:
+#include <util/delay.h>
+#include "keyboard.h"
+
+int main(void)
+{
+	DDRB = 0x00000001; // PD6 is OUTPUT other in
+ 168:	81 e0       	ldi	r24, 0x01	; 1
+ 16a:	87 bb       	out	0x17, r24	; 23
+	PORTB = 0x11111110; // do IN podciagniete rezystory a OUT = low
+ 16c:	80 e1       	ldi	r24, 0x10	; 16
+ 16e:	88 bb       	out	0x18, r24	; 24
+
+	setPorts(&DDRD, &PORTD, &PIND);
+ 170:	40 e3       	ldi	r20, 0x30	; 48
+ 172:	50 e0       	ldi	r21, 0x00	; 0
+ 174:	62 e3       	ldi	r22, 0x32	; 50
+ 176:	70 e0       	ldi	r23, 0x00	; 0
+ 178:	81 e3       	ldi	r24, 0x31	; 49
+ 17a:	90 e0       	ldi	r25, 0x00	; 0
+ 17c:	70 df       	rcall	.-288    	; 0x5e <setPorts>
+    while(1)
+    {
+		char key = pushKey();
+		
+		if(key == '7')
+			PORTB ^= (1 << 0);
+ 17e:	c1 e0       	ldi	r28, 0x01	; 1
+
+	setPorts(&DDRD, &PORTD, &PIND);
+
+    while(1)
+    {
+		char key = pushKey();
+ 180:	84 df       	rcall	.-248    	; 0x8a <pushKey>
+		
+		if(key == '7')
+ 182:	87 33       	cpi	r24, 0x37	; 55
+ 184:	e9 f7       	brne	.-6      	; 0x180 <main+0x18>
+			PORTB ^= (1 << 0);
+ 186:	88 b3       	in	r24, 0x18	; 24
+ 188:	8c 27       	eor	r24, r28
+ 18a:	88 bb       	out	0x18, r24	; 24
+ 18c:	f9 cf       	rjmp	.-14     	; 0x180 <main+0x18>
+
+0000018e <_exit>:
+ 18e:	f8 94       	cli
+
+00000190 <__stop_program>:
+ 190:	ff cf       	rjmp	.-2      	; 0x190 <__stop_program>
