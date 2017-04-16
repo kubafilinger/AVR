@@ -1,22 +1,15 @@
-#ifndef F_CPU
-#define F_CPU 8000000L
-#endif
-
-#include <avr/io.h>
-#include <avr/interrupt.h>
-
 ISR(TIMER0_OVF_vect)
 {
-	static volatile int src_nr = 0, licznik = 0;
+	static volatile int src_nr = 0, counter = 0;
 	
-	if(licznik++ == 10)
+	if(counter++ == 10)
 	{
 		src_nr = (src_nr + 1) % total_displays;
 		
 		*display_port = ~(1 << src_nr);
 		*digit_port = number[src_nr];
 	
-		licznik = 0;
+		counter = 0;
 	}
 	
 	asm volatile ("nop");
@@ -41,6 +34,7 @@ void LEDInit(uint8_t total, volatile uint8_t *digit_ddr_wsk, volatile uint8_t *d
 		*display_ddr |= (1 << i); // set OUT
 	}
 	
+	position = 0;
 	set_timer0();
 }
 
@@ -50,11 +44,16 @@ void LEDSetValue(char *val)
 	
 	for(i = 0; i < total_displays; i++)
 	{
-		number[i] = convertChar(val[i]);
-		
 		if(val[i] == '\0')
 			break;
+		
+		number[(i + position) % total_displays] = convertChar(val[i]);
 	}
+}
+
+void LEDSetPosition(uint8_t pos)
+{
+	position = pos % MAX_NUM_DISPLAY;
 }
 
 void LEDSetNumber(int nr)

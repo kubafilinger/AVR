@@ -7,14 +7,14 @@
 
 int main(void)
 {
-	LEDInit(6, &DDRC, &PORTC, &DDRD, &PORTD);
+	LEDInit(6, &DDRD, &PORTD, &DDRC, &PORTC);
 	sei();
 	
 	LEDSetNumber(32);
 	LEDSetValue("7 312");
 	clearDisplay();
 	int b = 0;
-	
+	LEDSetPosition(5);
     while(1)
     {
 		int static a = 0;
