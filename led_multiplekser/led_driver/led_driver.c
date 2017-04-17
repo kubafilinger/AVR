@@ -11,8 +11,6 @@ ISR(TIMER0_OVF_vect)
 	
 		counter = 0;
 	}
-	
-	asm volatile ("nop");
 }
 
 void LEDInit(uint8_t total, volatile uint8_t *digit_ddr_wsk, volatile uint8_t *digit_port_wsk, volatile uint8_t *display_ddr_wsk, volatile uint8_t *display_port_wsk)
@@ -31,7 +29,7 @@ void LEDInit(uint8_t total, volatile uint8_t *digit_ddr_wsk, volatile uint8_t *d
 	int i;
 	for(i = 0; i < total_displays; i++)
 	{
-		*display_ddr |= (1 << i); // set OUT
+		*display_ddr |= (1 << i);
 	}
 	
 	position = 0;
@@ -60,6 +58,18 @@ void LEDSetNumber(int nr)
 {
 	char s[MAX_NUM_DISPLAY + 1]; // +1 end char
 	sprintf(s, "%d\0", nr);
+	LEDSetValue(s);
+}
+
+void LEDSetNumberWithZero(int nr)
+{
+	char s[MAX_NUM_DISPLAY + 1]; // +1 end char
+	
+	if(nr < 10)
+		sprintf(s, "0%d\0", nr);
+	else
+		sprintf(s, "%d\0", nr);
+	
 	LEDSetValue(s);
 }
 
@@ -117,7 +127,7 @@ uint8_t convertChar(char s)
 			result = 0b01101111;
 			break;
 			
-		default: // null
+		default:
 			result = 0;
 			break;
 	}

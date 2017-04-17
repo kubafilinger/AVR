@@ -14,7 +14,7 @@ int main(void)
 	LEDSetValue("7 312");
 	clearDisplay();
 	int b = 0;
-	LEDSetPosition(5);
+	LEDSetPosition(1);
     while(1)
     {
 		int static a = 0;
@@ -24,7 +24,7 @@ int main(void)
 		else if(a == 0)
 			b = 0;
 			
-		(b) ? LEDSetNumber(a--) : LEDSetNumber(a++);
+		(b) ? LEDSetNumberWithZero(a--) : LEDSetNumberWithZero(a++);
 		
 
 		_delay_ms(100);
