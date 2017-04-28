@@ -1,17 +1,20 @@
 #define MAX_NUM_DISPLAY 8
+#define ANODA 0
+#define KATODA 1
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
 uint8_t total_displays;
 uint8_t position;
+uint8_t led_type;
 volatile uint8_t number[MAX_NUM_DISPLAY];
 volatile uint8_t *digit_ddr;
 volatile uint8_t *digit_port;
 volatile uint8_t *display_ddr;
 volatile uint8_t *display_port;
 
-void LEDInit(uint8_t, volatile uint8_t *, volatile uint8_t *, volatile uint8_t *, volatile uint8_t *);
+void LEDInit(uint8_t, uint8_t, volatile uint8_t *, volatile uint8_t *, volatile uint8_t *, volatile uint8_t *);
 
 void LEDSetValue(char *);
 
