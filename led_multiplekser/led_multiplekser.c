@@ -11,12 +11,12 @@ int main(void)
 
 	sei();
 	
-	LEDSetNumber(32);
+	LEDSetNumber(32);clearDisplay();
 	LEDSetValue("7 312");
-	clearDisplay();
 	int b = 0;
 	LEDSetPosition(1);
-    while(1)
+    
+	while(1)
     {
 		int static a = 0;
 
