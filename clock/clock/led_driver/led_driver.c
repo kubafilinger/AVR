@@ -6,16 +6,17 @@ ISR(TIMER0_OVF_vect)
 	{
 		src_nr = (src_nr + 1) % total_displays;
 		
-		*display_port = ~(1 << src_nr);
+		*display_port = (led_type & KATODA) ? (1 << src_nr) : ~(1 << src_nr);
 		*digit_port = number[src_nr];
 	
 		counter = 0;
 	}
 }
 
-void LEDInit(uint8_t total, volatile uint8_t *digit_ddr_wsk, volatile uint8_t *digit_port_wsk, volatile uint8_t *display_ddr_wsk, volatile uint8_t *display_port_wsk)
+void LEDInit(uint8_t total_displays_f, uint8_t led_type_f, volatile uint8_t *digit_ddr_wsk, volatile uint8_t *digit_port_wsk, volatile uint8_t *display_ddr_wsk, volatile uint8_t *display_port_wsk)
 {
-	total_displays = total;
+	total_displays = total_displays_f;
+	led_type = led_type_f % 2;
 	digit_ddr = digit_ddr_wsk;
 	digit_port = digit_port_wsk;
 	display_ddr = display_ddr_wsk;
@@ -45,7 +46,7 @@ void LEDSetValue(char *val)
 		if(val[i] == '\0')
 			break;
 		
-		number[(i + position) % total_displays] = convertChar(val[i]);
+		number[(i + position) % total_displays] = (led_type & KATODA) ? ~convertChar(val[i]) : convertChar(val[i]);
 	}
 }
 
@@ -78,7 +79,7 @@ void clearDisplay()
 	int i;
 	
 	for(i = 0; i < total_displays; i++)
-		number[i] = 0;
+		number[i] = (led_type & KATODA) ? ~0 : 0;
 }
 
 uint8_t convertChar(char s)

@@ -1,8 +1,8 @@
 #define F_CPU 8000000L
 
-#include <avr/io.h>
 #include "led_driver/led_driver.h"
-
+#include <avr/io.h>
+#include <avr/interrupt.h>
 #include <util/delay.h>
 
 int main(void)
@@ -11,8 +11,10 @@ int main(void)
  
 	sei();
 	
-	LEDSetNumber(32);clearDisplay();
+	LEDSetNumber(32);
+	clearDisplay();
 	LEDSetValue("7 312");
+	
 	int b = 0;
 	LEDSetPosition(1);
     

@@ -2,15 +2,19 @@ ISR(TIMER2_OVF_vect)
 {
 	TCCR2 = (1 << CS22) | (1 << CS20);
 	
-	if(CLOCKStatus & (1 << REVERSE_CLOCK))
+	if(CLOCKStatus & (1 << ACTIVE_STATUS))
 	{
-		if(CLOCKTime > 0)
+		if(CLOCKStatus & (1 << REVERSE_CLOCK))
+		{
+			if(CLOCKTime > 0)
 			CLOCKTime -= 1;
+		}
+		else
+			CLOCKTime = (CLOCKTime + 1);
+		
+		if(!(CLOCKStatus & (1 << CHANGE_STATUS)))
+			CLOCKStatus |= (1 << CHANGE_STATUS);	
 	}
-	else
-		CLOCKTime = (CLOCKTime + 1);
-	
-	CLOCKStatus |= (1 << CHANGE_STATUS);
 }
 
 int getSeconds()
@@ -47,19 +51,25 @@ void CLOCKReset()
 
 void CLOCKStart()
 {
-	CLOCKStatus |= (1 << ACTIVE_STATUS);
+	/*
+		this must be before set CLOCKStatus, because in otherwise timer will increase its value twice
+	*/
 	TIMSK |= (1 << TOIE2);
+	CLOCKStatus |= (1 << ACTIVE_STATUS);
 }
 
 void CLOCKStop()
 {
-	CLOCKStatus &= ~(1 << ACTIVE_STATUS);
+	/*
+		this must be before set CLOCKStatus, because in otherwise timer will increase its value twice
+	*/
 	TIMSK &= ~(1 << TOIE2);
+	CLOCKStatus &= ~(1 << ACTIVE_STATUS);
 }
 
 int CLOCKIsActive()
 {
-	if(CLOCKStatus && (1 << ACTIVE_STATUS))
+	if(CLOCKStatus & (1 << ACTIVE_STATUS))
 		return 1;
 	else
 		return 0;
@@ -72,5 +82,5 @@ void CLOCKInit()
 	TCNT2 = 0;
 	TCCR2 = (1 << CS22) | (1 << CS20);
 	
-	while(ASSR & 0x07);
+	//while(ASSR & 0x07);
 }

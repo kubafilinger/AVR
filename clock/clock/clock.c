@@ -4,14 +4,14 @@
 #include "clock_driver/clock_driver.h"
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <util/delay.h>
 
 int main(void)
 {
     DDRB = 0x00000001;
 	PORTB = 0b00011110;
 	
-	LEDInit(6, &DDRD, &PORTD, &DDRC, &PORTC);
+	
+	LEDInit(6, 1, &DDRD, &PORTD, &DDRC, &PORTC);
 	CLOCKInit();
 	sei();
 	

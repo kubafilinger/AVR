@@ -592,18 +592,18 @@ END GROUP
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x255 led_multiplekser.o
 
-.debug_line     0x00000000      0x2a3
+.debug_line     0x00000000      0x2a4
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000      0x2a3 led_multiplekser.o
+ .debug_line    0x00000000      0x2a4 led_multiplekser.o
 
 .debug_frame    0x00000000      0x174
  *(.debug_frame)
  .debug_frame   0x00000000      0x174 led_multiplekser.o
 
-.debug_str      0x00000000      0x2e8
+.debug_str      0x00000000      0x2ec
  *(.debug_str)
- .debug_str     0x00000000      0x2e8 led_multiplekser.o
-                                0x321 (size before relaxing)
+ .debug_str     0x00000000      0x2ec led_multiplekser.o
+                                0x325 (size before relaxing)
 
 .debug_loc      0x00000000      0x6b3
  *(.debug_loc)
