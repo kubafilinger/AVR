@@ -600,10 +600,10 @@ END GROUP
  *(.debug_frame)
  .debug_frame   0x00000000      0x174 led_multiplekser.o
 
-.debug_str      0x00000000      0x2d2
+.debug_str      0x00000000      0x2e8
  *(.debug_str)
- .debug_str     0x00000000      0x2d2 led_multiplekser.o
-                                0x310 (size before relaxing)
+ .debug_str     0x00000000      0x2e8 led_multiplekser.o
+                                0x321 (size before relaxing)
 
 .debug_loc      0x00000000      0x6b3
  *(.debug_loc)

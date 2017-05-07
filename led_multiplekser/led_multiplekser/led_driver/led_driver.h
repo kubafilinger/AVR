@@ -14,21 +14,21 @@ volatile uint8_t *digit_port;
 volatile uint8_t *display_ddr;
 volatile uint8_t *display_port;
 
-void LEDInit(uint8_t, uint8_t, volatile uint8_t *, volatile uint8_t *, volatile uint8_t *, volatile uint8_t *);
+void LEDInit(uint8_t total_displays_f, uint8_t led_type_f, volatile uint8_t *digit_ddr_wsk, volatile uint8_t *digit_port_wsk, volatile uint8_t *display_ddr_wsk, volatile uint8_t *display_port_wsk);
 
-void LEDSetValue(char *);
+void LEDSetValue(char *val);
 
-void LEDSetNumber(int);
+void LEDSetNumber(int nr);
 
 // 1 - 9 -> 01 - 09
-void LEDSetNumberWithZero(int);
+void LEDSetNumberWithZero(int nr);
 
 // set position first char on screen. 0 - first, 1 - second, etc.
-void LEDSetPosition(uint8_t);
+void LEDSetPosition(uint8_t pos);
 
 void clearDisplay();
 
-uint8_t convertChar(char);
+uint8_t convertChar(char s);
 
 void setTimer0();
 

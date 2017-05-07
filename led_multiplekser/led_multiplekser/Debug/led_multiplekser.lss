@@ -21,11 +21,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   8 .debug_frame  00000174  00000000  00000000  0000173c  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000002d2  00000000  00000000  000018b0  2**0
+  9 .debug_str    000002e8  00000000  00000000  000018b0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    000006b3  00000000  00000000  00001b82  2**0
+ 10 .debug_loc    000006b3  00000000  00000000  00001b98  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000058  00000000  00000000  00002235  2**0
+ 11 .debug_ranges 00000058  00000000  00000000  0000224b  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -600,15 +600,15 @@ void set_timer0()
 	}
 }
 
-void LEDInit(uint8_t total, uint8_t type, volatile uint8_t *digit_ddr_wsk, volatile uint8_t *digit_port_wsk, volatile uint8_t *display_ddr_wsk, volatile uint8_t *display_port_wsk)
+void LEDInit(uint8_t total_displays_f, uint8_t led_type_f, volatile uint8_t *digit_ddr_wsk, volatile uint8_t *digit_port_wsk, volatile uint8_t *display_ddr_wsk, volatile uint8_t *display_port_wsk)
 {
  36c:	ef 92       	push	r14
  36e:	ff 92       	push	r15
  370:	0f 93       	push	r16
  372:	1f 93       	push	r17
-	total_displays = total;
+	total_displays = total_displays_f;
  374:	80 93 86 00 	sts	0x0086, r24
-	led_type = type % 2;
+	led_type = led_type_f % 2;
  378:	61 70       	andi	r22, 0x01	; 1
  37a:	60 93 76 00 	sts	0x0076, r22
 	digit_ddr = digit_ddr_wsk;
@@ -712,7 +712,7 @@ int main(void)
  424:	61 e0       	ldi	r22, 0x01	; 1
  426:	86 e0       	ldi	r24, 0x06	; 6
  428:	0e 94 b6 01 	call	0x36c	; 0x36c <LEDInit>
-
+ 
 	sei();
  42c:	78 94       	sei
 	

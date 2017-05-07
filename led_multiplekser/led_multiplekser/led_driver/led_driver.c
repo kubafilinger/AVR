@@ -13,10 +13,10 @@ ISR(TIMER0_OVF_vect)
 	}
 }
 
-void LEDInit(uint8_t total, uint8_t type, volatile uint8_t *digit_ddr_wsk, volatile uint8_t *digit_port_wsk, volatile uint8_t *display_ddr_wsk, volatile uint8_t *display_port_wsk)
+void LEDInit(uint8_t total_displays_f, uint8_t led_type_f, volatile uint8_t *digit_ddr_wsk, volatile uint8_t *digit_port_wsk, volatile uint8_t *display_ddr_wsk, volatile uint8_t *display_port_wsk)
 {
-	total_displays = total;
-	led_type = type % 2;
+	total_displays = total_displays_f;
+	led_type = led_type_f % 2;
 	digit_ddr = digit_ddr_wsk;
 	digit_port = digit_port_wsk;
 	display_ddr = display_ddr_wsk;

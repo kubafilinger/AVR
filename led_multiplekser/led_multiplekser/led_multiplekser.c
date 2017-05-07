@@ -8,7 +8,7 @@
 int main(void)
 {
 	LEDInit(6, 1, &DDRD, &PORTD, &DDRC, &PORTC);
-
+ 
 	sei();
 	
 	LEDSetNumber(32);clearDisplay();
