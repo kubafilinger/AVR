@@ -51,12 +51,16 @@ Discarded input sections
  .bss           0x00000000        0x0 clock.o
  .text.LEDSetPosition
                 0x00000000        0x8 clock.o
+ .text.LEDSetNumber
+                0x00000000       0x5a clock.o
  .text.getSeconds
                 0x00000000       0x12 clock.o
  .text.getMinutes
                 0x00000000       0x1c clock.o
  .text.getHours
                 0x00000000       0x1c clock.o
+ .text.CLOCKReset
+                0x00000000       0x12 clock.o
  .text          0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_divmodhi4.o)
  .data          0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_divmodhi4.o)
  .bss           0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_divmodhi4.o)
@@ -324,7 +328,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xaf8
+.text           0x00000000      0xbea
  *(.vectors)
  .vectors       0x00000000       0x54 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16a.o
                 0x00000000                __vector_default
@@ -405,77 +409,86 @@ END GROUP
                 0x000000a6                . = ALIGN (0x2)
  *(.text.*)
  .text.__vector_9
-                0x000000a6       0xc2 clock.o
+                0x000000a6       0xc0 clock.o
                 0x000000a6                __vector_9
  .text.clearDisplay
-                0x00000168       0x22 clock.o
-                0x00000168                clearDisplay
+                0x00000166       0x22 clock.o
+                0x00000166                clearDisplay
  .text.convertChar
-                0x0000018a       0x40 clock.o
-                0x0000018a                convertChar
+                0x00000188       0x40 clock.o
+                0x00000188                convertChar
  .text.LEDSetValue
-                0x000001ca       0x80 clock.o
-                0x000001ca                LEDSetValue
- .text.LEDSetNumber
-                0x0000024a       0x5a clock.o
-                0x0000024a                LEDSetNumber
+                0x000001c8       0x80 clock.o
+                0x000001c8                LEDSetValue
+ .text.LEDSetNumberWithZero
+                0x00000248       0x7e clock.o
+                0x00000248                LEDSetNumberWithZero
  .text.set_timer0
-                0x000002a4        0xc clock.o
-                0x000002a4                set_timer0
- .text.LEDInit  0x000002b0       0x94 clock.o
-                0x000002b0                LEDInit
+                0x000002c6        0xc clock.o
+                0x000002c6                set_timer0
+ .text.LEDInit  0x000002d2       0x94 clock.o
+                0x000002d2                LEDInit
  .text.__vector_4
-                0x00000344       0x8a clock.o
-                0x00000344                __vector_4
- .text.getTime  0x000003ce       0x6a clock.o
-                0x000003ce                getTime
- .text.set_timer_rtc
-                0x00000438       0x1a clock.o
-                0x00000438                set_timer_rtc
- .text.main     0x00000452       0x60 clock.o
-                0x00000452                main
+                0x00000366       0xa0 clock.o
+                0x00000366                __vector_4
+ .text.getTime  0x00000406       0x6a clock.o
+                0x00000406                getTime
+ .text.CLOCKStart
+                0x00000470       0x12 clock.o
+                0x00000470                CLOCKStart
+ .text.CLOCKStop
+                0x00000482       0x12 clock.o
+                0x00000482                CLOCKStop
+ .text.CLOCKIsActive
+                0x00000494       0x12 clock.o
+                0x00000494                CLOCKIsActive
+ .text.CLOCKInit
+                0x000004a6       0x14 clock.o
+                0x000004a6                CLOCKInit
+ .text.main     0x000004ba       0xea clock.o
+                0x000004ba                main
  .text.libgcc.div
-                0x000004b2       0x28 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_divmodhi4.o)
-                0x000004b2                _div
-                0x000004b2                __divmodhi4
+                0x000005a4       0x28 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_divmodhi4.o)
+                0x000005a4                _div
+                0x000005a4                __divmodhi4
  .text.libgcc.div
-                0x000004da       0x44 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_udivmodsi4.o)
-                0x000004da                __udivmodsi4
- .text.libgcc   0x0000051e        0xc d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_tablejump.o)
-                0x0000051e                __tablejump2__
-                0x00000522                __tablejump__
+                0x000005cc       0x44 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_udivmodsi4.o)
+                0x000005cc                __udivmodsi4
+ .text.libgcc   0x00000610        0xc d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_tablejump.o)
+                0x00000610                __tablejump2__
+                0x00000614                __tablejump__
  .text.libgcc.div
-                0x0000052a       0x28 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_udivmodhi4.o)
-                0x0000052a                __udivmodhi4
+                0x0000061c       0x28 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_udivmodhi4.o)
+                0x0000061c                __udivmodhi4
  .text.avr-libc
-                0x00000552       0x44 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(sprintf.o)
-                0x00000552                sprintf
+                0x00000644       0x44 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(sprintf.o)
+                0x00000644                sprintf
  .text.avr-libc
-                0x00000596      0x3a4 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
-                0x00000596                vfprintf
+                0x00000688      0x3a4 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
+                0x00000688                vfprintf
  .text.avr-libc
-                0x0000093a       0x16 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen_P.o)
-                0x0000093a                strnlen_P
+                0x00000a2c       0x16 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen_P.o)
+                0x00000a2c                strnlen_P
  .text.avr-libc
-                0x00000950       0x16 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen.o)
-                0x00000950                strnlen
+                0x00000a42       0x16 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen.o)
+                0x00000a42                strnlen
  .text.avr-libc
-                0x00000966       0x64 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(fputc.o)
-                0x00000966                fputc
+                0x00000a58       0x64 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(fputc.o)
+                0x00000a58                fputc
  .text.avr-libc
-                0x000009ca       0xbc d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
-                0x000009ca                __ultoa_invert
+                0x00000abc       0xbc d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
+                0x00000abc                __ultoa_invert
  .text.libgcc.prologue
-                0x00000a86       0x38 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_prologue.o)
-                0x00000a86                __prologue_saves__
+                0x00000b78       0x38 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_prologue.o)
+                0x00000b78                __prologue_saves__
  .text.libgcc.prologue
-                0x00000abe       0x36 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_epilogue.o)
-                0x00000abe                __epilogue_restores__
-                0x00000af4                . = ALIGN (0x2)
+                0x00000bb0       0x36 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_epilogue.o)
+                0x00000bb0                __epilogue_restores__
+                0x00000be6                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000af4        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
-                0x00000af4                _exit
-                0x00000af4                exit
+ .fini9         0x00000be6        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
+                0x00000be6                _exit
+                0x00000be6                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -494,21 +507,20 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000af4        0x4 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000be6        0x4 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000af8                _etext = .
+                0x00000bea                _etext = .
 
-.data           0x00800060        0xa load address 0x00000af8
+.data           0x00800060        0xa load address 0x00000bea
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
  *(.rodata)
- .rodata        0x00800060        0x4 clock.o
+ .rodata        0x00800060        0x9 clock.o
  *(.rodata*)
- .rodata.str1.1
-                0x00800064        0x6 clock.o
  *(.gnu.linkonce.d*)
                 0x0080006a                . = ALIGN (0x2)
+ *fill*         0x00800069        0x1 
                 0x0080006a                _edata = .
                 0x0080006a                PROVIDE (__data_end, .)
 
@@ -516,11 +528,11 @@ END GROUP
                 0x0080006a                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.time.1565
+ .bss.time.1577
                 0x0080006a        0x6 clock.o
- .bss.src_nr.1491
+ .bss.src_nr.1493
                 0x00800070        0x2 clock.o
- .bss.counter.1492
+ .bss.counter.1494
                 0x00800072        0x2 clock.o
  .bss.CLOCKStatus
                 0x00800074        0x1 clock.o
@@ -538,8 +550,8 @@ END GROUP
                 0x00800088                total_displays
                 0x00800089                digit_ddr
                 0x0080008b                PROVIDE (__bss_end, .)
-                0x00000af8                __data_load_start = LOADADDR (.data)
-                0x00000b02                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000bea                __data_load_start = LOADADDR (.data)
+                0x00000bf4                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x0080008b        0x0
                 0x0080008b                PROVIDE (__noinit_start, .)
@@ -609,38 +621,38 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0x90
+.debug_aranges  0x00000000       0xb8
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x90 clock.o
+                0x00000000       0xb8 clock.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0x5ce
+.debug_info     0x00000000      0x812
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x5ce clock.o
+ .debug_info    0x00000000      0x812 clock.o
 
-.debug_abbrev   0x00000000      0x292
+.debug_abbrev   0x00000000      0x30a
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x292 clock.o
+ .debug_abbrev  0x00000000      0x30a clock.o
 
-.debug_line     0x00000000      0x2b1
+.debug_line     0x00000000      0x3c7
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000      0x2b1 clock.o
+ .debug_line    0x00000000      0x3c7 clock.o
 
-.debug_frame    0x00000000      0x1fc
+.debug_frame    0x00000000      0x234
  *(.debug_frame)
- .debug_frame   0x00000000      0x1fc clock.o
+ .debug_frame   0x00000000      0x234 clock.o
 
-.debug_str      0x00000000      0x2b4
+.debug_str      0x00000000      0x335
  *(.debug_str)
- .debug_str     0x00000000      0x2b4 clock.o
-                                0x2ed (size before relaxing)
+ .debug_str     0x00000000      0x335 clock.o
+                                0x36e (size before relaxing)
 
-.debug_loc      0x00000000      0x6bb
+.debug_loc      0x00000000      0x7f2
  *(.debug_loc)
- .debug_loc     0x00000000      0x6bb clock.o
+ .debug_loc     0x00000000      0x7f2 clock.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -660,9 +672,9 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0xb0
+.debug_ranges   0x00000000       0xf0
  *(.debug_ranges)
- .debug_ranges  0x00000000       0xb0 clock.o
+ .debug_ranges  0x00000000       0xf0 clock.o
 
 .debug_macro
  *(.debug_macro)
