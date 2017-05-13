@@ -22,16 +22,14 @@ int main(void)
 	{
 		if(CLOCKStatus & (1 << CHANGE_STATUS))
 		{
-			int *tab = getTime();
-		
 			LEDSetPosition(0);
-			LEDSetNumberWithZero(tab[0]);
-		
-		 	LEDSetPosition(2);
-		 	LEDSetNumberWithZero(tab[1]);
-		 		
+			LEDSetNumberWithZero(getHours());
+			
+			LEDSetPosition(2);
+			LEDSetNumberWithZero(getMinutes());
+			
 			LEDSetPosition(4);
-			LEDSetNumberWithZero(tab[2]);
+			LEDSetNumberWithZero(getSeconds());
 		
  		 	CLOCKStatus &= ~(1 << CHANGE_STATUS);
  		}

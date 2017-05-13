@@ -19,29 +19,63 @@ ISR(TIMER2_OVF_vect)
 
 int getSeconds()
 {
-	return (int)CLOCKTime;
+	return (int)((CLOCKTime % HOUR_SECONDS) % MINUTE_SECONDS);
 }
 
 int getMinutes()
 {
-	return (int)CLOCKTime / MINUTE_SECONDS;
+	return (int)((CLOCKTime % HOUR_SECONDS) / MINUTE_SECONDS);
 }
 
 int getHours()
 {
-	return (int)CLOCKTime / HOUR_SECONDS;
+	return (int)(CLOCKTime / HOUR_SECONDS);
 }
 
-int * getTime()
+void setSeconds(int new_seconds)
 {
-	static int time[3]; // [0] -> h, [1] -> m, [2] -> s
-	uint32_t tmpTime = CLOCKTime;
+	int seconds = getSeconds();
+	volatile uint32_t tmpTime = CLOCKTime;
 	
-	time[0] = getHours(),					tmpTime %= HOUR_SECONDS;
-	time[1] = tmpTime / MINUTE_SECONDS,		tmpTime %= MINUTE_SECONDS;
-	time[2] = tmpTime;
+	new_seconds %= 60;
 	
-	return time;
+	if(new_seconds < 0)
+		return;
+	
+	tmpTime -= (uint32_t)seconds;
+	tmpTime += (uint32_t)new_seconds;
+	
+	CLOCKTime = tmpTime;
+}
+
+void setMinutes(int new_minutes)
+{
+	int minutes = getMinutes();
+	volatile uint32_t tmpTime = CLOCKTime;
+	
+	new_minutes %= 60;
+	
+	if(new_minutes < 0)
+		return;
+	
+	tmpTime -= (uint32_t)minutes * MINUTE_SECONDS;
+	tmpTime += (uint32_t)new_minutes * MINUTE_SECONDS;
+	
+	CLOCKTime = tmpTime;
+}
+
+void setHours(int new_hours)
+{
+	int hours = getHours();
+	volatile uint32_t tmpTime = CLOCKTime;
+	
+	if(new_hours < 0)
+		return;
+		
+	tmpTime -= (uint32_t)hours * HOUR_SECONDS;	
+	tmpTime += (uint32_t)new_hours * HOUR_SECONDS;
+	
+	CLOCKTime = tmpTime;
 }
 
 void CLOCKReset()
