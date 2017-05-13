@@ -50,6 +50,8 @@ Discarded input sections
  .bss           0x00000000        0x0 led_multiplekser.o
  .text.LEDSetPosition
                 0x00000000        0x8 led_multiplekser.o
+ .text.LEDSetNumberWithZero
+                0x00000000       0x7e led_multiplekser.o
  .text          0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_divmodhi4.o)
  .data          0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_divmodhi4.o)
  .bss           0x00000000        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_divmodhi4.o)
@@ -303,7 +305,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xac2
+.text           0x00000000      0xb4e
  *(.vectors)
  .vectors       0x00000000       0x54 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16a.o
                 0x00000000                __vector_default
@@ -311,43 +313,43 @@ END GROUP
  *(.vectors)
  *(.progmem.gcc*)
  .progmem.gcc_sw_table.convertChar
-                0x00000054       0x14 led_multiplekser.o
-                0x00000068                . = ALIGN (0x2)
-                0x00000068                __trampolines_start = .
+                0x00000054       0x92 led_multiplekser.o
+                0x000000e6                . = ALIGN (0x2)
+                0x000000e6                __trampolines_start = .
  *(.trampolines)
- .trampolines   0x00000068        0x0 linker stubs
+ .trampolines   0x000000e6        0x0 linker stubs
  *(.trampolines*)
-                0x00000068                __trampolines_end = .
+                0x000000e6                __trampolines_end = .
  *(.progmem*)
-                0x00000068                . = ALIGN (0x2)
+                0x000000e6                . = ALIGN (0x2)
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x00000068                __ctors_start = .
+                0x000000e6                __ctors_start = .
  *(.ctors)
-                0x00000068                __ctors_end = .
-                0x00000068                __dtors_start = .
+                0x000000e6                __ctors_end = .
+                0x000000e6                __dtors_start = .
  *(.dtors)
-                0x00000068                __dtors_end = .
+                0x000000e6                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x00000068        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16a.o
-                0x00000068                __init
+ .init0         0x000000e6        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16a.o
+                0x000000e6                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x00000068        0xc d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16a.o
+ .init2         0x000000e6        0xc d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16a.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x00000074       0x16 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_copy_data.o)
-                0x00000074                __do_copy_data
- .init4         0x0000008a       0x10 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_clear_bss.o)
-                0x0000008a                __do_clear_bss
+ .init4         0x000000f2       0x16 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_copy_data.o)
+                0x000000f2                __do_copy_data
+ .init4         0x00000108       0x10 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_clear_bss.o)
+                0x00000108                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -358,96 +360,93 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x0000009a        0x8 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16a.o
+ .init9         0x00000118        0x8 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16a.o
  *(.init9)
  *(.text)
- .text          0x000000a2        0x4 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16a.o
-                0x000000a2                __vector_1
-                0x000000a2                __vector_12
-                0x000000a2                __bad_interrupt
-                0x000000a2                __vector_6
-                0x000000a2                __vector_3
-                0x000000a2                __vector_11
-                0x000000a2                __vector_13
-                0x000000a2                __vector_17
-                0x000000a2                __vector_19
-                0x000000a2                __vector_7
-                0x000000a2                __vector_5
-                0x000000a2                __vector_4
-                0x000000a2                __vector_2
-                0x000000a2                __vector_15
-                0x000000a2                __vector_8
-                0x000000a2                __vector_14
-                0x000000a2                __vector_10
-                0x000000a2                __vector_16
-                0x000000a2                __vector_18
-                0x000000a2                __vector_20
-                0x000000a6                . = ALIGN (0x2)
+ .text          0x00000120        0x4 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16a.o
+                0x00000120                __vector_1
+                0x00000120                __vector_12
+                0x00000120                __bad_interrupt
+                0x00000120                __vector_6
+                0x00000120                __vector_3
+                0x00000120                __vector_11
+                0x00000120                __vector_13
+                0x00000120                __vector_17
+                0x00000120                __vector_19
+                0x00000120                __vector_7
+                0x00000120                __vector_5
+                0x00000120                __vector_4
+                0x00000120                __vector_2
+                0x00000120                __vector_15
+                0x00000120                __vector_8
+                0x00000120                __vector_14
+                0x00000120                __vector_10
+                0x00000120                __vector_16
+                0x00000120                __vector_18
+                0x00000120                __vector_20
+                0x00000124                . = ALIGN (0x2)
  *(.text.*)
  .text.__vector_9
-                0x000000a6       0xde led_multiplekser.o
-                0x000000a6                __vector_9
+                0x00000124       0xde led_multiplekser.o
+                0x00000124                __vector_9
  .text.clearDisplay
-                0x00000184       0x2a led_multiplekser.o
-                0x00000184                clearDisplay
+                0x00000202       0x2a led_multiplekser.o
+                0x00000202                clearDisplay
  .text.convertChar
-                0x000001ae       0x40 led_multiplekser.o
-                0x000001ae                convertChar
+                0x0000022c       0xb2 led_multiplekser.o
+                0x0000022c                convertChar
  .text.LEDSetValue
-                0x000001ee       0x9a led_multiplekser.o
-                0x000001ee                LEDSetValue
+                0x000002de       0x9a led_multiplekser.o
+                0x000002de                LEDSetValue
  .text.LEDSetNumber
-                0x00000288       0x5a led_multiplekser.o
-                0x00000288                LEDSetNumber
- .text.LEDSetNumberWithZero
-                0x000002e2       0x7e led_multiplekser.o
-                0x000002e2                LEDSetNumberWithZero
+                0x00000378       0x5a led_multiplekser.o
+                0x00000378                LEDSetNumber
  .text.set_timer0
-                0x00000360        0xc led_multiplekser.o
-                0x00000360                set_timer0
- .text.LEDInit  0x0000036c       0xa2 led_multiplekser.o
-                0x0000036c                LEDInit
- .text.main     0x0000040e       0xb2 led_multiplekser.o
-                0x0000040e                main
+                0x000003d2        0xc led_multiplekser.o
+                0x000003d2                set_timer0
+ .text.LEDInit  0x000003de       0xa2 led_multiplekser.o
+                0x000003de                LEDInit
+ .text.main     0x00000480       0xcc led_multiplekser.o
+                0x00000480                main
  .text.libgcc.div
-                0x000004c0       0x28 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_divmodhi4.o)
-                0x000004c0                _div
-                0x000004c0                __divmodhi4
- .text.libgcc   0x000004e8        0xc d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_tablejump.o)
-                0x000004e8                __tablejump2__
-                0x000004ec                __tablejump__
+                0x0000054c       0x28 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_divmodhi4.o)
+                0x0000054c                _div
+                0x0000054c                __divmodhi4
+ .text.libgcc   0x00000574        0xc d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_tablejump.o)
+                0x00000574                __tablejump2__
+                0x00000578                __tablejump__
  .text.libgcc.div
-                0x000004f4       0x28 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_udivmodhi4.o)
-                0x000004f4                __udivmodhi4
+                0x00000580       0x28 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_udivmodhi4.o)
+                0x00000580                __udivmodhi4
  .text.avr-libc
-                0x0000051c       0x44 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(sprintf.o)
-                0x0000051c                sprintf
+                0x000005a8       0x44 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(sprintf.o)
+                0x000005a8                sprintf
  .text.avr-libc
-                0x00000560      0x3a4 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
-                0x00000560                vfprintf
+                0x000005ec      0x3a4 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(vfprintf_std.o)
+                0x000005ec                vfprintf
  .text.avr-libc
-                0x00000904       0x16 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen_P.o)
-                0x00000904                strnlen_P
+                0x00000990       0x16 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen_P.o)
+                0x00000990                strnlen_P
  .text.avr-libc
-                0x0000091a       0x16 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen.o)
-                0x0000091a                strnlen
+                0x000009a6       0x16 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(strnlen.o)
+                0x000009a6                strnlen
  .text.avr-libc
-                0x00000930       0x64 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(fputc.o)
-                0x00000930                fputc
+                0x000009bc       0x64 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(fputc.o)
+                0x000009bc                fputc
  .text.avr-libc
-                0x00000994       0xbc d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
-                0x00000994                __ultoa_invert
+                0x00000a20       0xbc d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libc.a(ultoa_invert.o)
+                0x00000a20                __ultoa_invert
  .text.libgcc.prologue
-                0x00000a50       0x38 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_prologue.o)
-                0x00000a50                __prologue_saves__
+                0x00000adc       0x38 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_prologue.o)
+                0x00000adc                __prologue_saves__
  .text.libgcc.prologue
-                0x00000a88       0x36 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_epilogue.o)
-                0x00000a88                __epilogue_restores__
-                0x00000abe                . = ALIGN (0x2)
+                0x00000b14       0x36 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_epilogue.o)
+                0x00000b14                __epilogue_restores__
+                0x00000b4a                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000abe        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
-                0x00000abe                _exit
-                0x00000abe                exit
+ .fini9         0x00000b4a        0x0 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
+                0x00000b4a                _exit
+                0x00000b4a                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -466,11 +465,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000abe        0x4 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000b4a        0x4 d:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000ac2                _etext = .
+                0x00000b4e                _etext = .
 
-.data           0x00800060       0x10 load address 0x00000ac2
+.data           0x00800060       0x32 load address 0x00000b4e
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -478,42 +477,40 @@ END GROUP
  .rodata        0x00800060        0x9 led_multiplekser.o
  *(.rodata*)
  .rodata.str1.1
-                0x00800069        0x6 led_multiplekser.o
+                0x00800069       0x29 led_multiplekser.o
  *(.gnu.linkonce.d*)
-                0x00800070                . = ALIGN (0x2)
- *fill*         0x0080006f        0x1 
-                0x00800070                _edata = .
-                0x00800070                PROVIDE (__data_end, .)
+                0x00800092                . = ALIGN (0x2)
+                0x00800092                _edata = .
+                0x00800092                PROVIDE (__data_end, .)
 
-.bss            0x00800070       0x19
-                0x00800070                PROVIDE (__bss_start, .)
+.bss            0x00800092       0x17
+                0x00800092                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.a.1685    0x00800070        0x2 led_multiplekser.o
  .bss.src_nr.1495
-                0x00800072        0x2 led_multiplekser.o
+                0x00800092        0x2 led_multiplekser.o
  .bss.counter.1496
-                0x00800074        0x2 led_multiplekser.o
+                0x00800094        0x2 led_multiplekser.o
  *(COMMON)
- COMMON         0x00800076       0x13 led_multiplekser.o
-                0x00800076                led_type
-                0x00800077                position
-                0x00800078                display_port
-                0x0080007a                number
-                0x00800082                digit_port
-                0x00800084                display_ddr
-                0x00800086                total_displays
-                0x00800087                digit_ddr
-                0x00800089                PROVIDE (__bss_end, .)
-                0x00000ac2                __data_load_start = LOADADDR (.data)
-                0x00000ad2                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800096       0x13 led_multiplekser.o
+                0x00800096                led_type
+                0x00800097                position
+                0x00800098                display_port
+                0x0080009a                number
+                0x008000a2                digit_port
+                0x008000a4                display_ddr
+                0x008000a6                total_displays
+                0x008000a7                digit_ddr
+                0x008000a9                PROVIDE (__bss_end, .)
+                0x00000b4e                __data_load_start = LOADADDR (.data)
+                0x00000b80                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800089        0x0
-                0x00800089                PROVIDE (__noinit_start, .)
+.noinit         0x008000a9        0x0
+                0x008000a9                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00800089                PROVIDE (__noinit_end, .)
-                0x00800089                _end = .
-                0x00800089                PROVIDE (__heap_start, .)
+                0x008000a9                PROVIDE (__noinit_end, .)
+                0x008000a9                _end = .
+                0x008000a9                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -584,30 +581,30 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0x617
+.debug_info     0x00000000      0x74d
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x617 led_multiplekser.o
+ .debug_info    0x00000000      0x74d led_multiplekser.o
 
-.debug_abbrev   0x00000000      0x255
+.debug_abbrev   0x00000000      0x24c
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x255 led_multiplekser.o
+ .debug_abbrev  0x00000000      0x24c led_multiplekser.o
 
-.debug_line     0x00000000      0x2a4
+.debug_line     0x00000000      0x32b
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000      0x2a4 led_multiplekser.o
+ .debug_line    0x00000000      0x32b led_multiplekser.o
 
 .debug_frame    0x00000000      0x174
  *(.debug_frame)
  .debug_frame   0x00000000      0x174 led_multiplekser.o
 
-.debug_str      0x00000000      0x2ec
+.debug_str      0x00000000      0x2f2
  *(.debug_str)
- .debug_str     0x00000000      0x2ec led_multiplekser.o
-                                0x325 (size before relaxing)
+ .debug_str     0x00000000      0x2f2 led_multiplekser.o
+                                0x32b (size before relaxing)
 
-.debug_loc      0x00000000      0x6b3
+.debug_loc      0x00000000      0xa46
  *(.debug_loc)
- .debug_loc     0x00000000      0x6b3 led_multiplekser.o
+ .debug_loc     0x00000000      0xa46 led_multiplekser.o
 
 .debug_macinfo
  *(.debug_macinfo)

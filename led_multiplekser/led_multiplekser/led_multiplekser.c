@@ -15,23 +15,30 @@ int main(void)
 	clearDisplay();
 	LEDSetValue("7 312");
 	
-	int b = 0;
-	LEDSetPosition(1);
+	char chars[30] = "ABbCcEFGHhIiJjLOoPSTtUuYZ=-_.";
     
 	while(1)
     {
 		int static a = 0;
-
-		if(a == 150)
-			b = 1;
-		else if(a == 0)
-			b = 0;
 			
 		clearDisplay();	
-			
-		(b) ? LEDSetNumberWithZero(a--) : LEDSetNumberWithZero(a++);
+		LEDSetValue("ABbCcd");
+		_delay_ms(5000);
 		
-
-		_delay_ms(100);
+		clearDisplay();
+		LEDSetValue("EFGHhI");
+		_delay_ms(5000);
+		
+		clearDisplay();
+		LEDSetValue("iJjLOo");
+		_delay_ms(5000);
+		
+		clearDisplay();
+		LEDSetValue("PSTtUu");
+		_delay_ms(5000);
+		
+		clearDisplay();
+		LEDSetValue("YZ_-.=");
+		_delay_ms(5000);
 	}
 }
