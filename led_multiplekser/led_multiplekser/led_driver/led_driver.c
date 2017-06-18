@@ -261,3 +261,21 @@ void set_timer0()
 	TCCR0 = 1 << CS01;
 	TIMSK |= 1 << TOIE0;
 }
+
+void LEDDot(uint8_t dot)
+{
+	uint8_t result;
+	
+	result = (led_type & KATODA) ? ~number[position] : number[position];
+	
+	if(dot == DEL_DOT)
+	{
+		result &= ~convertChar('.');
+	}
+	else
+	{
+		result |= convertChar('.');
+	}
+	
+	number[position] = (led_type & KATODA) ? ~result : result;
+}
