@@ -2,5 +2,6 @@
 **/*.atsuo
 **/*.xml
 **/*.cproj
+**/.gitignore
 **/Debug/*
 !**/Debug/*.hex
