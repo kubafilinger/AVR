@@ -1,0 +1,6 @@
+**/*.atsln
+**/*.atsuo
+**/*.xml
+**/*.cproj
+**/Debug/*
+!**/Debug/*.hex
