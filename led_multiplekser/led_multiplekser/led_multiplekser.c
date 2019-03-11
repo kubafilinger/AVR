@@ -1,13 +1,13 @@
 #define F_CPU 8000000L
 
-#include "led_driver/led_driver.h"
+#include "led_driver.h"
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
 
 int main(void)
 {
-	LEDInit(6, 1, &DDRD, &PORTD, &DDRC, &PORTC);
+	LEDInit(6, KATODA, &DDRD, &PORTD, &DDRC, &PORTC);
 
 	sei();
 

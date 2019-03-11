@@ -1,5 +1,5 @@
-#ifndef __LED_DRIVER_H__
-#define __LED_DRIVER_H__
+#ifndef LED_DRIVER_H_
+#define LED_DRIVER_H_
 
 #define MAX_NUM_DISPLAY 8
 #define ANODA 0
@@ -9,7 +9,6 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <stdio.h>
 
 uint8_t total_displays;
 uint8_t position;
@@ -36,8 +35,10 @@ void LEDSetPosition(uint8_t pos);
 
 void clearDisplay();
 
+void turnOffAllDisplays();
+
 uint8_t convertChar(char s);
 
 void setTimer0();
 
-#endif // __LED_DRIVER_H__
+#endif // LED_DRIVER_H_
